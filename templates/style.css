@@ -1,0 +1,16 @@
+div#mainFrom {
+    /* align-content: center; */
+    /* margin: 10% 21% 0 10%; */
+    border: 1px solid black;
+    width: 50%;
+    text-align: center;
+    padding: 31px;
+}
+
+input {
+    margin-bottom: 19px;
+}
+
+select#links1 {
+    margin-bottom: 19px;
+}

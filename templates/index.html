@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        div#mainFrom {
+            border: 1px solid black;
+            width: 30%;
+            text-align: center;
+            padding: 24px 0px 0 0;
+            margin: 152px 0px 0px 450px;
+        }
+
+        input {
+            margin-bottom: 19px;
+        }
+
+        select#links1 {
+            margin-bottom: 19px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="mainFrom">
+    <div class="Form">
+        <!--<input list="links" name="links" id="links">-->
+        <select id="links1">
+            <option value="Future Bridge">Future Bridge</option>
+            <option value="Science Daily">Science Daily</option>  
+            <!--<option value="Green Biz">Green Biz</option>
+            <option value="Hydrogenfuelnews">Hydrogenfuelnews</option>
+            <option value="IRENA">IRENA</option>-->
+        </select><br>
+        <input type="text" name="fileName" placeholder="fileName" id="fileName1"><br>
+        <input type="text" name="ImagePrefix" placeholder="ImagePrefix" id="ImagePrefix1"><br>
+        <input type="submit" name="submit" id="submit1"><br>
+        <p id="Success" style="display:none">Data Generated Successfully</p>
+        <p id="Failure" style="display:none">Data Not Generated</p>
+        <i class="fa fa-spinner fa-spin" id="spinner" style="font-size:24px;display:none"></i>
+    </div>
+    </div>
+    
+</body>
+<script>
+    
+    document.getElementById('submit1').addEventListener('click', function(){
+        document.getElementById('Failure').style.display="none"
+        document.getElementById('Success').style.display="none"
+        document.getElementById('spinner').style.display="block"
+        var link=document.getElementById('links1').value;
+        var firstPage=1,lastPage=1
+        var fileName=document.getElementById('fileName1').value
+        var ImagePrefix=document.getElementById('ImagePrefix1').value
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange=function(){
+            if(this.readyState==4 && this.status==200)
+            {
+                if(this.response=='')
+                {
+                    document.getElementById('spinner').style.display="none"
+                    document.getElementById('Failure').style.display="block"
+                }
+                else{
+                    document.getElementById('spinner').style.display="none"
+                    document.getElementById('Success').style.display="block"
+
+                }
+            }
+
+        }
+
+        
+        xhttp.open('POST','http://127.0.0.1:5000/send')
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        xhttp.send("link="+link+"&firstPage=1&lastPage=1&fileName="+fileName+"&ImagePrefix="+ImagePrefix)
+        //console.log(document.getElementById('links').value);
+
+    });
+
+</script>
+</html>
