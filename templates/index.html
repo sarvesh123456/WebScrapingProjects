@@ -38,9 +38,10 @@
         <input type="text" name="fileName" placeholder="fileName" id="fileName1"><br>
         <input type="text" name="ImagePrefix" placeholder="ImagePrefix" id="ImagePrefix1"><br>
         <input type="submit" name="submit" id="submit1"><br>
-        <p id="Success" style="display:none">Data Generated Successfully</p>
-        <p id="Failure" style="display:none">Data Not Generated</p>
-        <i class="fa fa-spinner fa-spin" id="spinner" style="font-size:24px;display:none"></i>
+        <p id="Success1" style="display:none">Data Generated Successfully</p>
+        <p id="Failure1" style="display:none">Data Not Generated</p>
+        <a id="download1" href="" style="display:none" target="blank"><button>Download Link</button></a>
+        <i class="fa fa-spinner fa-spin" id="spinner1" style="font-size:24px;display:none"></i>
     </div>
     </div>
     
@@ -48,9 +49,10 @@
 <script>
     
     document.getElementById('submit1').addEventListener('click', function(){
-        document.getElementById('Failure').style.display="none"
-        document.getElementById('Success').style.display="none"
-        document.getElementById('spinner').style.display="block"
+        document.getElementById('Failure1').style.display="none"
+        document.getElementById('Success1').style.display="none"
+        document.getElementById('download1').style.display="none"
+        document.getElementById('spinner1').style.display="block"
         var link=document.getElementById('links1').value;
         var firstPage=1,lastPage=1
         var fileName=document.getElementById('fileName1').value
@@ -61,12 +63,14 @@
             {
                 if(this.response=='')
                 {
-                    document.getElementById('spinner').style.display="none"
-                    document.getElementById('Failure').style.display="block"
+                    document.getElementById('spinner1').style.display="none"
+                    document.getElementById('Failure1').style.display="block"
                 }
                 else{
-                    document.getElementById('spinner').style.display="none"
-                    document.getElementById('Success').style.display="block"
+                    document.getElementById('spinner1').style.display="none"
+                    document.getElementById('Success1').style.display="block"
+                    document.getElementById('download1').setAttribute('href','/fileDownload/'+this.response)
+                    document.getElementById('download1').style.display="block"
 
                 }
             }
