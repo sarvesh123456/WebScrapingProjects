@@ -7,7 +7,7 @@ https://chromedriver.storage.googleapis.com/index.html?path=78.0.3904.70/
 
 ---------------------------------------------------------
 
-To run the file navigate to the folder and run app.py file. To run app.py use command python app.pyX
+To run the file navigate to the folder and run app.py file. To run app.py use command python app.py
 
 To run the file following python dependencies would be required
 -->Selenium
