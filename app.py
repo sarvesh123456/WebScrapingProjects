@@ -1,6 +1,7 @@
-from flask import Flask,render_template,request,jsonify
+from flask import Flask,render_template,request,jsonify,send_file
 import FutureBridgeScraping
 import time
+import os
 
 app=Flask(__name__)
 
@@ -8,10 +9,14 @@ app=Flask(__name__)
 def start():
     return render_template('index.html')
 
+@app.route('/fileDownload/<downloadLink>',methods=['GET'])
+def fileDownload(downloadLink):
+    return send_file(downloadLink,attachment_filename=downloadLink)
+
 @app.route('/send',methods=['GET','POST'])
 def startScraping():
     if request.method=='POST':
-        fileName='uploads\\'+request.form['fileName']+str(time.time())+'.xlsx'
+        fileName=request.form['fileName']+str(time.time())+'.xlsx'
         try:
             if request.form['link']=='Future Bridge':
                 FutureBridgeScraping.scrapeData1(1,1,fileName,request.form['ImagePrefix'])
