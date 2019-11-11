@@ -11,7 +11,7 @@ def scrapeData2(pageCount,maxPage,OutputFile,ImagePrefix):
         print('Execution Started')
         book=Workbook()
         sheet=book.active
-        driver = webdriver.Chrome('drivers\\chromedriver.exe')
+        driver = webdriver.Chrome('./chromedriver')
         global counter
         counter = 0
         while pageCount<=maxPage:
@@ -36,7 +36,7 @@ def scrapeData2(pageCount,maxPage,OutputFile,ImagePrefix):
 
 def getPageData2(link):
         try:
-                driver = webdriver.Chrome('drivers\\chromedriver.exe')
+                driver = webdriver.Chrome('./chromedriver')
                 driver.get(link)
                 time.sleep(3)
                 resDate=driver.execute_script("return document.getElementById('date_posted')")
@@ -61,7 +61,7 @@ def scrapeData1(pageCount,maxPage,OutputFile,ImagePrefix):
         print('Execution Started')
         book=Workbook()
         sheet=book.active
-        driver = webdriver.Chrome('drivers\\chromedriver.exe')
+        driver = webdriver.Chrome('./chromedriver')
         global counter
         counter = 0
         while pageCount<=maxPage:
@@ -96,7 +96,7 @@ def scrapeData1(pageCount,maxPage,OutputFile,ImagePrefix):
         print('Execution Ends')
 
 def getPageData1(link):
-        driver = webdriver.Chrome('drivers\\chromedriver.exe')
+        driver = webdriver.Chrome('./chromedriver')
         driver.get(link)
         time.sleep(5)
         resSummary=driver.execute_script("return document.getElementsByClassName('content-inner')")
