@@ -22,4 +22,4 @@ def startScraping():
             return ''
 
 if __name__=='__main__':
-    app.run(debug=True,host='148.28.144.146')
+    app.run(debug=True,host='52.179.120.84')
